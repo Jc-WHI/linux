@@ -79,4 +79,13 @@ void add(struct Node* node, int n) {
     node->next = newNode;
 }
 
+---
+
+24-05-17 
+링크드 리스트 구현  마지막
+
+역으로 생각을 해본다 
+
+
+
 
