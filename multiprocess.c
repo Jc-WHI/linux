@@ -3,14 +3,26 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <unistd.h>
+
+#define process_num 5
+
+ struct Process  {
+    int id;
+    int priority;
+    int burstTime;
+    int waitingTime;
+    int turnaroundTime;
+
+
+}*process;
 typedef struct Node {
-    int data;
+    struct Process *process;
     struct Node* next;
-}Node;
+}*Node;
 
 
 int main(){
-    int i, ret,status;
+    int i, pid_num,status;
     pid_t pid;
     for (i = 0; i < 5; i++){
         pid = fork();
@@ -20,6 +32,7 @@ int main(){
         }
         else if (pid == 0){
             printf("forked\n");
+            
             
             return 0;
 
@@ -41,33 +54,22 @@ int main(){
 
     
 
-    struct Node *head = malloc(sizeof(struct Node));
-    struct Node *tail;
-    head->data = 1;
-    tail->data = NULL;
-    tail->next = NULL;
-    head->next = tail;
     
-    add(head,10);
+}
 
-    printf("%d",head->data);
-    return 0;
+void addqueue(struct Node *Node,struct Process *process){
+    Node->process = &process;
+    int *a;
+    a = malloc(sizeof(Node))
     
+
+
 }
 
 
 
-struct Node {
-    int data;
-    struct Node* next;
-};
 
-void add(struct Node* node, int n) {
-    struct Node* newNode = malloc(sizeof(struct Node));
-    newNode->data = n;
-    newNode->next = node->next;
-    node->next = newNode;
-}
+
 
 
 
